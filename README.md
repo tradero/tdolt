@@ -1,4 +1,6 @@
-# localtunnel #
+# tdotun #
+
+## WARNING - fork created only for tradero.net usage with changed default settings to reach our server without any additional parameters, this work will not be maintained any more ##
 
 localtunnel exposes your localhost to the world for easy testing and sharing! No need to mess with DNS or deploy just to have others test out your changes.
 
