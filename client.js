@@ -20,25 +20,26 @@ var connect = function(opt) {
 
     // local port
     var local_port = opt.port;
+    var local_host = opt.host;
 
-    var base_uri = opt.host + '/';
+    var base_uri = opt.server + '/';
 
     // optionally override the upstream server
-    var upstream = url.parse(opt.host);
+    var upstream = url.parse(opt.server);
 
     // no subdomain at first, maybe use requested domain
     var assigned_domain = opt.subdomain;
 
     // connect to upstream given connection parameters
-    var tunnel = function (remote_host, remote_port) {
+    var tunnel = function (remote_server, remote_port) {
 
         var remote_opt = {
-            host: remote_host,
+            host: remote_server,
             port: remote_port
         };
 
         var local_opt = {
-            host: 'localhost',
+            host: local_host,
             port: local_port
         };
 
@@ -120,7 +121,7 @@ var connect = function(opt) {
             }, 1000);
         }
 
-        // our assigned hostname and tcp port
+        // our assigned servername and tcp port
         var port = body.port;
         var host = upstream.hostname;
 
