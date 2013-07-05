@@ -4,20 +4,25 @@ var lt_client = require('../client');
 var argv = require('optimist')
     .usage('Usage: $0 --port [num]')
     .demand(['port'])
-    .options('host', {
-        default: 'http://localtunnel.me',
+    .options('server', {
+        default: 'http://tun.tradero.net',
         describe: 'upstream server providing forwarding'
     })
-    .options('subdomain', {
+    .options('host', {
+        default: 'localhost',
+        describe: 'local server'
+    })
+    .options('sub', {
         describe: 'request this subdomain'
     })
     .describe('port', 'internal http server port')
     .argv;
 
 var opt = {
+    server: argv.server,
     host: argv.host,
     port: argv.port,
-    subdomain: argv.subdomain,
+    subdomain: argv.sub,
 }
 
 var client = lt_client.connect(opt);
